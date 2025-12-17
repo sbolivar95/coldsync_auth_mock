@@ -9,6 +9,8 @@ import { OnboardingPage } from '@/views/OnboardingPage'
 import { CreateOrgPage } from '@/views/CreateOrgPage'
 import { JoinOrgPage } from '@/views/JoinOrgPage'
 import { AppHome } from '@/views/AppHome'
+import { ForgotPasswordPage } from '@/views/ForgotPasswordPage'
+import { ResetPasswordPage } from '@/views/ResetPasswordPage'
 
 export function AppRouter() {
   return (
@@ -30,6 +32,14 @@ export function AppRouter() {
       <Route
         path='/register'
         element={<RegisterPage />}
+      />
+      <Route
+        path='/forgot-password'
+        element={<ForgotPasswordPage />}
+      />
+      <Route
+        path='/reset-password'
+        element={<ResetPasswordPage />}
       />
 
       <Route element={<RequireAuth />}>

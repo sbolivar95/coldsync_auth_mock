@@ -14,6 +14,7 @@ type AuthState = {
 
   init: () => Promise<void>
   refreshMembership: () => Promise<void>
+  sendResetPassword: (email: string) => Promise<void>
 
   signIn: (email: string, password: string) => Promise<void>
   signUp: (email: string, password: string) => Promise<void>
@@ -93,6 +94,13 @@ export const useAuth = create<AuthState>((set, get) => ({
 
   signOut: async () => {
     const { error } = await supabase.auth.signOut()
+    if (error) throw error
+  },
+
+  sendResetPassword: async (email) => {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
     if (error) throw error
   },
 }))
